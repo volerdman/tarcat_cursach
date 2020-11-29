@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "794558287554",
+    "firebase_url": "https://tarcat-bbcce.firebaseio.com",
+    "project_id": "tarcat-bbcce",
+    "storage_bucket": "tarcat-bbcce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794558287554:android:52146a66faf6995e93355b",
+        "android_client_info": {
+          "package_name": "com.example.tarcat_kursach"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "794558287554-dl49r1e26glqbeheepf5mj6kuo2ml9t4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA14YLhoDqbTbw1PzdtX9p6HVaWfeMp-Pc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "794558287554-dl49r1e26glqbeheepf5mj6kuo2ml9t4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

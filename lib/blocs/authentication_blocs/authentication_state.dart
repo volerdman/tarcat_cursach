@@ -11,7 +11,7 @@ abstract class AuthenticationState extends Equatable {
 class AuthenticationInitial extends AuthenticationState {}
 
 class AuthenticationSuccess extends AuthenticationState {
-  final User firebaseUser;
+  final FirebaseUser firebaseUser;
 
   AuthenticationSuccess(this.firebaseUser);
 
