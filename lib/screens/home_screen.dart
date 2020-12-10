@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tarcat_kursach/bottom_tabs/home_tab.dart';
+import 'package:tarcat_kursach/bottom_tabs/saved_tabs.dart';
+import 'package:tarcat_kursach/bottom_tabs/search_tabs.dart';
 import 'package:tarcat_kursach/widgets/bottom_tabs.dart';
-
-import '../constant.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     _tabsPageController = PageController();
     super.initState();
+    addUser();
   }
 
   @override
@@ -39,30 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 });
               },
               children: [
-                Container(
-                  child: Center(
-                    child: Text(
-                      "HomePage",
-                      style: Constants.regularHeading,
-                    ),
-                  ),
-                ),
-                Container(
-                  child: Center(
-                    child: Text(
-                      "SearchPage",
-                      style: Constants.regularHeading,
-                    ),
-                  ),
-                ),
-                Container(
-                  child: Center(
-                    child: Text(
-                      "SavedPage",
-                      style: Constants.regularHeading,
-                    ),
-                  ),
-                ),
+                HomeTab(),
+                SearchTab(),
+                SavedTab(),
               ],
             ),
           ),
@@ -77,5 +60,17 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> addUser() async {
+    FirebaseUser _user = await FirebaseAuth.instance.currentUser();
+    DocumentReference _firebaseRef =
+        Firestore.instance.collection('Users').document(_user.uid);
+    return _firebaseRef
+        .setData({
+          'email': _user.email, // John Doe
+        })
+        .then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
   }
 }

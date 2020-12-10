@@ -101,6 +101,7 @@ class _LoginFormState extends State<LoginForm> {
                       labelText: "Email",
                     ),
                     keyboardType: TextInputType.emailAddress,
+                    // ignore: deprecated_member_use
                     autovalidate: true,
                     autocorrect: false,
                     validator: (_) {
