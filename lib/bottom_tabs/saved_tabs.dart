@@ -4,7 +4,12 @@ import 'package:tarcat_kursach/screens/product_page.dart';
 import 'package:tarcat_kursach/services/firebase_services.dart';
 import 'package:tarcat_kursach/widgets/custom_action_bar.dart';
 
-class SavedTab extends StatelessWidget {
+class SavedTab extends StatefulWidget {
+  @override
+  _SavedTabState createState() => _SavedTabState();
+}
+
+class _SavedTabState extends State<SavedTab> {
   final FirebaseServices _firebaseServices = FirebaseServices();
 
   @override
@@ -69,7 +74,7 @@ class SavedTab extends StatelessWidget {
                                 return Padding(
                                   padding: const EdgeInsets.symmetric(
                                     vertical: 16.0,
-                                    horizontal: 24.0,
+                                    horizontal: 20.0,
                                   ),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -88,7 +93,7 @@ class SavedTab extends StatelessWidget {
                                       ),
                                       Container(
                                         padding: EdgeInsets.only(
-                                          left: 16.0,
+                                          left: 5.0,
                                         ),
                                         child: Column(
                                           mainAxisAlignment:
@@ -128,6 +133,13 @@ class SavedTab extends StatelessWidget {
                                           ],
                                         ),
                                       ),
+                                      IconButton(
+                                        icon: Icon(Icons.delete),
+                                        onPressed: () async {
+                                          deleteProduct(userID, document);
+                                          setState(() {});
+                                        },
+                                      ),
                                     ],
                                   ),
                                 );
@@ -162,5 +174,13 @@ class SavedTab extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> deleteProduct(AsyncSnapshot snap, DocumentSnapshot doc) async {
+    return await _firebaseServices.usersRef
+        .document(snap.data)
+        .collection('Saved')
+        .document(doc.documentID)
+        .delete();
   }
 }

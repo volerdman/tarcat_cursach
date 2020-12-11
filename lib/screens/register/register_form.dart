@@ -46,7 +46,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text('Register Failure'),
+                    Text('Ошибка при регистрации'),
                     Icon(Icons.error),
                   ],
                 ),
@@ -63,7 +63,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text('Registering...'),
+                    Text('Регистрация...'),
                     CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                     )
@@ -95,30 +95,33 @@ class _RegisterFormState extends State<RegisterForm> {
                       labelText: "Email",
                     ),
                     keyboardType: TextInputType.emailAddress,
-                    autovalidate: true,
                     autocorrect: false,
                     validator: (_) {
-                      return !state.isEmailValid ? 'Invalid Email' : null;
+                      return !state.isEmailValid
+                          ? 'Неверно введен Email'
+                          : null;
                     },
                   ),
                   TextFormField(
                     controller: _passwordController,
                     decoration: InputDecoration(
                       icon: Icon(Icons.lock),
-                      labelText: "Password",
+                      labelText: "Пароль",
                     ),
                     obscureText: true,
-                    autovalidate: true,
                     autocorrect: false,
                     validator: (_) {
-                      return !state.isPasswordValid ? 'Invalid Password' : null;
+                      return !state.isPasswordValid
+                          ? 'Пароль должен быть больше 8 символов и содержать ' +
+                              '\n' 'буквы и цифры'
+                          : null;
                     },
                   ),
                   SizedBox(
                     height: 30,
                   ),
                   ButtonGradient(
-                    width: 150,
+                    width: 200,
                     height: 45,
                     onPressed: () {
                       if (isButtonEnabled(state)) {
@@ -126,7 +129,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       }
                     },
                     text: Text(
-                      'Register',
+                      'Регистрация',
                       style: TextStyle(
                         color: Colors.white,
                       ),

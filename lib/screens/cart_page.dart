@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:tarcat_kursach/screens/product_page.dart';
@@ -74,7 +76,7 @@ class _CartPageState extends State<CartPage> {
                                 return Padding(
                                   padding: const EdgeInsets.symmetric(
                                     vertical: 16.0,
-                                    horizontal: 24.0,
+                                    horizontal: 20.0,
                                   ),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -93,7 +95,7 @@ class _CartPageState extends State<CartPage> {
                                       ),
                                       Container(
                                         padding: EdgeInsets.only(
-                                          left: 16.0,
+                                          left: 5.0,
                                         ),
                                         child: Column(
                                           mainAxisAlignment:
@@ -133,6 +135,13 @@ class _CartPageState extends State<CartPage> {
                                           ],
                                         ),
                                       ),
+                                      IconButton(
+                                        icon: Icon(Icons.delete),
+                                        onPressed: () async {
+                                          deleteProduct(userID, document);
+                                          setState(() {});
+                                        },
+                                      ),
                                     ],
                                   ),
                                 );
@@ -167,5 +176,13 @@ class _CartPageState extends State<CartPage> {
         ],
       ),
     );
+  }
+
+  Future<void> deleteProduct(AsyncSnapshot snap, DocumentSnapshot doc) async {
+    return await _firebaseServices.usersRef
+        .document(snap.data)
+        .collection('Cart')
+        .document(doc.documentID)
+        .delete();
   }
 }

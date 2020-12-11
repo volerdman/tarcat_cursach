@@ -53,7 +53,7 @@ class _LoginFormState extends State<LoginForm> {
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text('Login Failure'),
+                    Text('Ошибка при авторизации'),
                     Icon(Icons.error),
                   ],
                 ),
@@ -70,7 +70,7 @@ class _LoginFormState extends State<LoginForm> {
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text('Logging In...'),
+                    Text('Авторизация...'),
                     CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                     )
@@ -105,27 +105,31 @@ class _LoginFormState extends State<LoginForm> {
                     autovalidate: true,
                     autocorrect: false,
                     validator: (_) {
-                      return !state.isEmailValid ? 'Invalid Email' : null;
+                      return !state.isEmailValid
+                          ? 'Неверно введен Email'
+                          : null;
                     },
                   ),
                   TextFormField(
                     controller: _passwordController,
                     decoration: InputDecoration(
                       icon: Icon(Icons.lock),
-                      labelText: "Password",
+                      labelText: "Пароль",
                     ),
                     obscureText: true,
-                    autovalidate: true,
                     autocorrect: false,
                     validator: (_) {
-                      return !state.isPasswordValid ? 'Invalid Password' : null;
+                      return !state.isPasswordValid
+                          ? 'Пароль должен быть больше 8 символов и содержать ' +
+                              '\n' 'буквы и цифры'
+                          : null;
                     },
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   ButtonGradient(
-                    width: 150,
+                    width: 200,
                     height: 45,
                     onPressed: () {
                       if (isButtonEnabled(state)) {
@@ -133,7 +137,7 @@ class _LoginFormState extends State<LoginForm> {
                       }
                     },
                     text: Text(
-                      'LogIn',
+                      'Вход',
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -147,7 +151,7 @@ class _LoginFormState extends State<LoginForm> {
                     height: 10,
                   ),
                   ButtonGradient(
-                    width: 150,
+                    width: 200,
                     height: 45,
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (_) {
@@ -157,7 +161,7 @@ class _LoginFormState extends State<LoginForm> {
                       }));
                     },
                     text: Text(
-                      'Register',
+                      'Регистрация',
                       style: TextStyle(
                         color: Colors.white,
                       ),

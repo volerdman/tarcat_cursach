@@ -58,8 +58,22 @@ class _BottomTabsState extends State<BottomTabs> {
             },
           ),
           BottomTabBtn(
-            imagePath: "assets/images/tab_logout.png",
+            imagePath: "assets/images/tab_info.png",
             selected: _selectedTab == 3 ? true : false,
+            onPressed: () {
+              widget.tabPressed(3);
+            },
+          ),
+          // BottomTabBtn(
+          //   imagePath: "assets/images/tab_profile.png",
+          //   selected: _selectedTab == 4 ? true : false,
+          //   onPressed: () {
+          //     widget.tabPressed(4);
+          //   },
+          // ),
+          BottomTabBtn(
+            imagePath: "assets/images/tab_logout.png",
+            selected: _selectedTab == 4 ? true : false,
             onPressed: () {
               BlocProvider.of<AuthenticationBloc>(context)
                   .add(AuthenticationLoggedOut());

@@ -46,6 +46,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 HomeTab(),
                 SearchTab(),
                 SavedTab(),
+                Container(
+                  child: Center(
+                    child: Text('Information'),
+                  ),
+                ),
+                Container(
+                  child: Center(
+                    child: Text('Profile'),
+                  ),
+                )
               ],
             ),
           ),

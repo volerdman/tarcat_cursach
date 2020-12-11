@@ -50,7 +50,7 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'Register',
+                      'Регистрация',
                       style: TextStyle(
                         fontSize: 40,
                         color: Color(0xff6a515e),

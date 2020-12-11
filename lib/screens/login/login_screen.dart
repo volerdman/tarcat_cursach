@@ -46,7 +46,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'Login',
+                      'Авторизация',
                       style: TextStyle(
                         fontSize: 40,
                         color: Color(0xff6a515e),
